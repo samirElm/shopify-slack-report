@@ -1,11 +1,12 @@
 class SlackService
-  attr_reader :notifier
+  attr_reader :notifier, :notifiable
 
   def initialize(args = {})
-    @notifier = Slack::Notifier.new args[:shop].slack_webhook_url
+    @notifiable = args[:notifiable]
+    @notifier = Slack::Notifier.new notifiable.slack_webhook_url
   end
 
-  def send_report
-    notifier.ping "Hey"
+  def call
+    notifier.ping notifiable.pretext, attachments: [notifiable.attachments]
   end
 end
