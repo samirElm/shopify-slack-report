@@ -1,6 +1,8 @@
 class ShopsController < ShopifyApp::AuthenticatedController
   def show
     @shop = Shop.current
+
+    SlackService.new(notifiable: @shop).call
   end
 
   def edit
