@@ -13,4 +13,12 @@ class Shop < ActiveRecord::Base
   def attachments
     ShopService::SlackResponder.new(self).attachments
   end
+
+  def total_orders_between(date_min, date_max)
+    ShopService::Report.new.total_orders_between(date_min, date_max)
+  end
+
+  def total_revenue_between(date_min, date_max)
+    ShopService::Report.new.total_revenue_between(date_min, date_max)
+  end
 end
