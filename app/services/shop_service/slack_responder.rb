@@ -17,12 +17,12 @@ class ShopService::SlackResponder
       fields: [
         {
           title: "Orders",
-          value: shop.total_orders_between(today, tomorrow),
+          value: shop.total_orders_between(yesterday, today),
           short: true
         },
         {
           title: "Revenue",
-          value: "#{shop.total_revenue_between(today, tomorrow)}€",
+          value: "#{shop.total_revenue_between(yesterday, today)}€",
           short: true
         }
       ],
@@ -32,11 +32,11 @@ class ShopService::SlackResponder
 
   private
 
-  def today
-    DateTime.current.beginning_of_day
+  def yesterday
+    (DateTime.current - 1.day).beginning_of_day
   end
 
-  def tomorrow
-    (DateTime.current + 1).beginning_of_day
+  def today
+    DateTime.current.beginning_of_day
   end
 end
