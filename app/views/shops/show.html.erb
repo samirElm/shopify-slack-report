@@ -1,4 +1,26 @@
-<h1>Configuration</h1>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    ShopifyApp.ready(function(){
+      ShopifyApp.Bar.initialize({
+        title: "Configuration",
+        icon: "<%= asset_path('slack-shopify-logo.png') %>"
+      });
+    });
+  </script>
+<% end %>
 
-<p><%= @shop.slack_webhook_url %></p>
-<%= link_to "Edit", edit_shop_path(@shop) %>
+<div class="section">
+  <div class="section-summary">
+    <h1>Configuration</h1>
+    <p>Slack Webhook URL</p>
+  </div>
+  <div class="section-content">
+    <div class="section-row">
+      <div class="section-cell">
+        <h1>Slack Webhook URL</h1>
+        <p class="url"><%= @shop.slack_webhook_url %> <span class="icon ico-checkmark-green"></span></p>
+        <%= link_to "Edit Webhook URL", edit_shop_path(@shop), class: 'btn primary' %>
+      </div>
+    </div>
+  </div>
+</div>
