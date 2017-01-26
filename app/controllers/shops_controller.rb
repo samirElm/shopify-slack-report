@@ -12,8 +12,12 @@ class ShopsController < ShopifyApp::AuthenticatedController
     @shop.update(shop_params)
 
     if @shop.save
+      flash[:notice] = "Your Webhook URL has been updated successfully !"
+
       redirect_to root_path
     else
+      flash[:notice] = "An error occured, please check that you entered a valid Webhook URL."
+
       redirect_to :back
     end
   end
