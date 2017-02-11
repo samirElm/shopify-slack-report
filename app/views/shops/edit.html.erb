@@ -11,16 +11,16 @@
 
 <div class="section">
   <div class="section-summary">
-    <h1>Configuration</h1>
-    <p>Slack Webhook URL</p>
+    <h1>Parameters</h1>
+    <p>Customize your integration</p>
   </div>
   <div class="section-content">
     <div class="section-row">
       <div class="section-cell">
-        <h1>Edit your Webhook URL</h1>
+        <h1>Edit your Shop</h1>
         <%= simple_form_for @shop do |f| %>
-          <%= f.input :slack_webhook_url, label: false, :input_html => { :class => "full-width" } %>
-          <%= f.button :submit, 'Update URL', class: 'btn primary' %>
+          <%= f.input :channel, label: false, :input_html => { :class => "full-width" } %>
+          <%= f.button :submit, 'Update Shop', class: 'btn primary' %>
         <% end %>
       </div>
     </div>

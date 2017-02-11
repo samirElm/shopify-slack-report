@@ -37,8 +37,16 @@
     <div class="section-row">
       <div class="section-cell">
         <h1>Channel</h1>
-        <p class="url"><%= @shop.slack_webhook_url %> <span class="icon ico-checkmark-green"></span></p>
-        <%= link_to "Edit Webhook URL", edit_shop_path(@shop), class: 'btn primary' %>
+        <p>
+        <div class="channel">
+          <% if @shop.channel.empty? %>
+            Please edit your shop to provide a channel to send report to.
+          <% else %>
+            #<%= @shop.channel %>
+          <% end %>
+          </div>
+        </p>
+        <%= link_to "Edit Shop", edit_shop_path(@shop), class: 'btn primary' %>
       </div>
     </div>
   </div>
