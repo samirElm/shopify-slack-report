@@ -10,10 +10,6 @@ class Shop < ActiveRecord::Base
     Shop.all
   end
 
-  def pretext
-    ShopService::SlackResponder.new(self).pretext
-  end
-
   def attachments
     ShopService::SlackResponder.new(self).attachments
   end
