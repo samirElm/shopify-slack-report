@@ -11,6 +11,6 @@ class OmniauthCallbacksController < ShopifyApp::AuthenticatedController
   private
 
   def request_access_token
-    SlackService::Omniauth.new(code: params['code']).access_token
+    SlackService::Omniauth.new(code: params['code']).access_token ||= ''
   end
 end
