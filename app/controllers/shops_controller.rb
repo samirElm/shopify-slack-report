@@ -12,7 +12,7 @@ class ShopsController < ShopifyApp::AuthenticatedController
     @shop.update(shop_params)
 
     if @shop.save
-      flash[:notice] = "Your Webhook URL has been updated successfully !"
+      flash[:notice] = "Your parameters has been updated successfully !"
 
       redirect_to root_path
     else
@@ -25,7 +25,7 @@ class ShopsController < ShopifyApp::AuthenticatedController
   private
 
   def shop_params
-    params.require(:shop).permit(:slack_webhook_url)
+    params.require(:shop).permit(:channel)
   end
 
   def load_shop

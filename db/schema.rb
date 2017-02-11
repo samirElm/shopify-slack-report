@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122161553) do
+ActiveRecord::Schema.define(version: 20170211144915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "shops", force: :cascade do |t|
-    t.string   "shopify_domain",                 null: false
-    t.string   "shopify_token",                  null: false
+    t.string   "shopify_domain",              null: false
+    t.string   "shopify_token",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slack_webhook_url", default: ""
+    t.string   "access_token",   default: ""
+    t.string   "provider",       default: ""
+    t.string   "channel",        default: ""
   end
 
   add_index "shops", ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true, using: :btree
