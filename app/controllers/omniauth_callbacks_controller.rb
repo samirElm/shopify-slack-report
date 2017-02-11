@@ -1,10 +1,12 @@
-class OmniauthCallbacksController < ApplicationController
+class OmniauthCallbacksController < ShopifyApp::AuthenticatedController
   require 'http'
   require 'json'
 
   def slack
+    Shop.current.update_attributes(provider: 'slack', access_token: request_access_token)
+
     JSON.parse(HTTP.post('https://slack.com/api/chat.postMessage', params: {
-      token: request_access_token,
+      token: Shop.current.access_token,
       channel: '#general',
       text: 'Hello world!'
     }))
