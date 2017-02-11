@@ -18,7 +18,11 @@
     <div class="section-row">
       <div class="section-cell">
         <h1>Add Shopify Report to Slack</h1>
-        <a href="https://slack.com/oauth/authorize?scope=chat:write:bot&client_id=59953116069.130894548453" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+        <% if @shop.access_token.empty? %>
+          <a href="https://slack.com/oauth/authorize?scope=chat:write:bot&client_id=59953116069.130894548453" target="_blank"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+        <% else %>
+          <p>Your Slack account is already connected.</p>
+        <% end %>
       </div>
     </div>
   </div>
