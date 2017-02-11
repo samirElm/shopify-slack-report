@@ -17,9 +17,9 @@
   <div class="section-content">
     <div class="section-row">
       <div class="section-cell">
-        <h1>Edit your Shop</h1>
+        <h1>Edit your parameters</h1>
         <%= simple_form_for @shop do |f| %>
-          <%= f.input :channel, label: false, :input_html => { :class => "full-width" } %>
+          <%= f.input :channel, placeholder: 'general', :input_html => { :class => "full-width" } %>
           <%= f.button :submit, 'Update Shop', class: 'btn primary' %>
         <% end %>
       </div>
