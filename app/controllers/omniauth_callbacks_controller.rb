@@ -11,20 +11,23 @@ class OmniauthCallbacksController < ShopifyApp::AuthenticatedController
       text: 'Hello world!'
     }))
 
+    flash[:notice] = "Your slack account has been connected successfully !"
+
     redirect_to root_path
   end
 
   private
 
   def request_access_token
-    call_oauth['access_token']
+    # call_oauth['access_token']
+    SlackService::Omniauth.new(code: params['code']).access_token
   end
 
-  def call_oauth
-    JSON.parse(HTTP.post('https://slack.com/api/oauth.access', params: {
-      client_id: ENV["SLACK_CLIENT_ID"],
-      client_secret: ENV["SLACK_CLIENT_SECRET"],
-      code: params['code']
-    }))
-  end
+  # def call_oauth
+  #   JSON.parse(HTTP.post('https://slack.com/api/oauth.access', params: {
+  #     client_id: ENV["SLACK_CLIENT_ID"],
+  #     client_secret: ENV["SLACK_CLIENT_SECRET"],
+  #     code: params['code']
+  #   }))
+  # end
 end
