@@ -1,4 +1,7 @@
 class SlackService::Omniauth
+  require 'http'
+  require 'json'
+
   attr_reader :code
 
   def initialize(args = {})

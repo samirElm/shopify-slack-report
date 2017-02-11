@@ -36,8 +36,6 @@ gem 'shopify_app'
 
 gem 'figaro'
 
-gem 'slack-notifier'
-
 gem 'simple_form'
 
 gem 'http'

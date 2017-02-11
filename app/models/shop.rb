@@ -6,6 +6,10 @@ class Shop < ActiveRecord::Base
     find_by_shopify_domain(ShopifyAPI::Shop.current.domain)
   end
 
+  def self.active
+    Shop.all
+  end
+
   def pretext
     ShopService::SlackResponder.new(self).pretext
   end

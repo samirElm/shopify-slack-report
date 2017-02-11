@@ -1,8 +1,8 @@
 desc "Send a daily report on Slack"
 task :send_daily_report => :environment do
-  Shop.all.each do |shop|
+  Shop.active.each do |shop|
     shop.with_shopify_session do
-      SlackService.new(notifiable: shop).call
+      SlackService::Notifier.new(notifiable: shop).notify
     end
   end
 end
